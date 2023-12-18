@@ -1,10 +1,27 @@
 let canvas = document.querySelector("#canvas")
 let ctx = canvas.getContext("2d")
 
-ctx.fillStyle="red"
+let width = canvas.width
+let height = canvas.height
 
-ctx.beginPath();
+let opacity = 1;
 
-  ctx.arc(100,100,60,0,Math.PI*2,true);
+function drawCircle(x,y){
+  ctx.fillStyle = `rgba(0,255,0,${opacity}`;
+  ctx.beginPath();
 
-ctx.fill(); 
+  ctx.arc(x,y,10, 0, Math.PI*2, false);
+  ctx.fill();
+}
+
+canvas.addEventListener("click", e=>{
+  drawCircle(e.offsetX, e.offsetY)
+})
+
+document.querySelector("#clear").addEventListener("click", ()=>{
+  ctx.clearRect(0,0,width, height);
+})
+
+document.querySelector("#opacity").addEventListener("change", (e)=>{
+   opacity = e.target.value;
+});
