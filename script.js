@@ -1,3 +1,5 @@
+// opacity with html canvas api and javascirpt 
+
 let canvas = document.querySelector("#canvas")
 let ctx = canvas.getContext("2d")
 
